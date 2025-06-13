@@ -1,0 +1,17 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# VSCode
+.vscode/
+
+# Data & DB
+data/
+knowledge_base.db
+
+# Index files
+indexes/
+
+# Environment
+.env
