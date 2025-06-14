@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+<<<<<<< HEAD
 # Python
 __pycache__/
 *.py[cod]
@@ -15,3 +17,27 @@ indexes/
 
 # Environment
 .env
+=======
+.venv/
+.env
+__pycache__/
+>>>>>>> 3b44dc7 (Add .gitignore)
+=======
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+
+# VSCode
+.vscode/
+
+# Data & DB
+data/
+knowledge_base.db
+
+# Index files
+indexes/
+
+# Environment
+.env
+>>>>>>> 46e2de3 (Initial import: scraping, preprocessing, retrieval experiments, FastAPI app)

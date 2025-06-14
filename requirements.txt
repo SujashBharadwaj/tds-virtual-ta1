@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 fastapi
 uvicorn
 python-dotenv
@@ -9,3 +10,16 @@ sentence-transformers
 faiss-cpu
 langchain
 openai
+=======
+fastapi
+uvicorn
+python-dotenv
+aiohttp
+beautifulsoup4
+html2text
+tqdm
+sentence-transformers
+faiss-cpu
+langchain
+openai
+>>>>>>> 46e2de3 (Initial import: scraping, preprocessing, retrieval experiments, FastAPI app)
