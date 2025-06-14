@@ -107,7 +107,7 @@ if __name__ == "__main__":
     with open(MAP_PATH, "w", encoding="utf-8") as f:
         json.dump(map_info, f, indent=2)
     print(f"Wrote map to {MAP_PATH}")
-=======
+
 # embed_and_index.py
 import os
 import json
@@ -216,4 +216,4 @@ if __name__ == "__main__":
     with open(MAP_PATH, "w", encoding="utf-8") as f:
         json.dump(map_info, f, indent=2)
     print(f"Wrote map to {MAP_PATH}")
->>>>>>> 46e2de3 (Initial import: scraping, preprocessing, retrieval experiments, FastAPI app)
+

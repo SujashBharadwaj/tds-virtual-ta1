@@ -92,7 +92,6 @@ if __name__ == '__main__':
         print("\n-----------------------------\n")
     print("Session ended. Goodbye!")
 
-=======
 """
 retrieval_experiments.py
 
@@ -197,4 +196,4 @@ if __name__ == '__main__':
             print(f"  - {src.upper()} ID {cid} (score={score:.3f})")
             print_snippet(src, cid)
     print("Goodbye!")
->>>>>>> 46e2de3 (Initial import: scraping, preprocessing, retrieval experiments, FastAPI app)
+
