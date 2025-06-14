@@ -50,8 +50,8 @@ with open("indexes/markdown_map.json", "r", encoding="utf-8") as f:
 with open("indexes/discourse_map.json", "r", encoding="utf-8") as f:
     DIS_MAP = json.load(f)
 
-GEN_TOKENIZER = AutoTokenizer.from_pretrained("google/flan-t5-large")
-GEN_MODEL = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-large")
+GEN_TOKENIZER = AutoTokenizer.from_pretrained("google/flan-t5-base")
+GEN_MODEL     = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-base")
 
 def retrieve_topk(query: str, k: int = 5):
     vec = EMBED_MODEL.encode([query], convert_to_numpy=True)
