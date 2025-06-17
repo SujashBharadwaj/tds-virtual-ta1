@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import os
 import json
 import sqlite3
@@ -260,4 +259,4 @@ def main():
 
 if __name__ == '__main__':
     main()
->>>>>>> 46e2de3 (Initial import: scraping, preprocessing, retrieval experiments, FastAPI app)
+

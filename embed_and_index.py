@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # embed_and_index.py
 import os
 import json

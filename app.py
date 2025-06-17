@@ -7,7 +7,8 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from dotenv import load_dotenv
 from sentence_transformers import SentenceTransformer
-from transformers import AutoTokenizer, AutoModelForSeq2SeqLM
+from transformers import AutoTokenizer, AutoModelForCausalLM
+import torch
 
 # Load environment
 load_dotenv()
@@ -50,8 +51,12 @@ with open("indexes/markdown_map.json", "r", encoding="utf-8") as f:
 with open("indexes/discourse_map.json", "r", encoding="utf-8") as f:
     DIS_MAP = json.load(f)
 
-GEN_TOKENIZER = AutoTokenizer.from_pretrained("google/flan-t5-base")
-GEN_MODEL     = AutoModelForSeq2SeqLM.from_pretrained("google/flan-t5-base")
+GEN_TOKENIZER = AutoTokenizer.from_pretrained("meta-llama/Llama-3-8b-Instruct")
+GEN_MODEL = AutoModelForCausalLM.from_pretrained(
+    "meta-llama/Llama-3-8b-Instruct",
+    torch_dtype=torch.float16,
+    device_map="auto"
+)
 
 def retrieve_topk(query: str, k: int = 5):
     vec = EMBED_MODEL.encode([query], convert_to_numpy=True)
@@ -80,14 +85,16 @@ def snippet(source: str, cid: int):
 
 def generate_answer(question: str, contexts: list[str]):
     prompt = (
-        "You're a friendly virtual TA for a data science course. "
-        "Use the context excerpts to answer the student's question clearly and conversationally.\n\n"
-        + "\n\n---\n\n".join(contexts)
-        + f"\n\nStudent: {question}\nTA:"
+        "<|begin_of_text|><|start_header_id|>system<|end_header_id|>\n"
+        "You're a helpful and friendly teaching assistant. Answer the following clearly and concisely.\n"
+        "<|start_header_id|>user<|end_header_id|>\n"
+        f"Question: {question}\n"
+        + "\n\n".join(contexts) +
+        "<|start_header_id|>assistant<|end_header_id|>\n"
     )
-    inputs = GEN_TOKENIZER(prompt, return_tensors="pt", truncation=True, max_length=2048)
-    out = GEN_MODEL.generate(**inputs, max_length=256, num_beams=4)
-    return GEN_TOKENIZER.decode(out[0], skip_special_tokens=True)
+    inputs = GEN_TOKENIZER(prompt, return_tensors="pt").to(GEN_MODEL.device)
+    output = GEN_MODEL.generate(**inputs, max_new_tokens=256, do_sample=True, top_p=0.9, temperature=0.7)
+    return GEN_TOKENIZER.decode(output[0], skip_special_tokens=True)
 
 @app.post("/query", response_model=QueryOut)
 async def query_api(qin: QueryIn):

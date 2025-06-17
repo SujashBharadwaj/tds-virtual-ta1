@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 """
 retrieval_experiments.py
 

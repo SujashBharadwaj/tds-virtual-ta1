@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 {
   "version": 2,
   "builds": [
@@ -26,4 +26,4 @@
     { "src": "/(.*)", "dest": "app.py" }
   ]
 }
->>>>>>> 46e2de3 (Initial import: scraping, preprocessing, retrieval experiments, FastAPI app)
+
