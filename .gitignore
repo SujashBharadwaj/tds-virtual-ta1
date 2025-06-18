@@ -1,40 +1,19 @@
-# Python
+# Ignore virtual environments
+.venv/
+env/
+ENV/
+
+# Ignore Python bytecode
 __pycache__/
 *.py[cod]
-.venv/
 
-# VSCode
-.vscode/
+# Ignore OS files
+.DS_Store
 
-# Data & DB
-data/
-knowledge_base.db
+# Ignore large model files
+*.pt
+*.bin
+*.ckpt
 
-# Index files
-indexes/
-
-# Environment
-.env
-=======
-.venv/
-.env
-__pycache__/
-=======
-# Python
-__pycache__/
-*.py[cod]
-.venv/
-
-# VSCode
-.vscode/
-
-# Data & DB
-data/
-knowledge_base.db
-
-# Index files
-indexes/
-
-# Environment
-.env
-
+# Ignore cache folders
+.cache/
