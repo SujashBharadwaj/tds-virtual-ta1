@@ -1,4 +1,15 @@
-__pycache__
-*.pyc
-*.pyo
-.env
+# Prevent these from being added to the image
+.venv/
+__pycache__/
+indexes/
+*.db
+*.index
+*.lib
+*.dll
+*.so
+*.pyd
+*.pt
+.cache/
+*.zip
+*.tar.gz
+node_modules/
