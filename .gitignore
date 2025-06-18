@@ -1,19 +1,22 @@
-# Ignore virtual environments
-.venv/
-env/
-ENV/
-
-# Ignore Python bytecode
+# Ignore Python cache and venv
 __pycache__/
-*.py[cod]
+.venv/
+*.pyc
 
-# Ignore OS files
-.DS_Store
-
-# Ignore large model files
-*.pt
+# Ignore local/model/data artifacts
+*.db
+*.index
+*.sqlite
+*.pkl
 *.bin
-*.ckpt
-
-# Ignore cache folders
+*.lib
+*.dll
+*.so
+*.pyd
+*.pt
 .cache/
+node_modules/
+indexes/
+discourse.index
+markdown.index
+*.json
